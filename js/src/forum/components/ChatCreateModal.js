@@ -36,16 +36,16 @@ export default class ChatCreateModal extends ChatModal {
 
     componentFormInputColor() {
         return this.componentFormColor({
-            title: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.color'),
+            title: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.color.label'),
             desc: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.color.validator'),
             stream: this.getInput().color,
-            placeholder: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.color'),
+            placeholder: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.color.label'),
         });
     }
 
     componentFormInputIcon() {
         return this.componentFormIcon({
-            title: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.icon'),
+            title: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.icon.label'),
             desc: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.icon.validator', {
                 a: <a href="https://fontawesome.com/icons?m=free" tabindex="-1" target="blank" />,
             }),

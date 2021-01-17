@@ -8,7 +8,7 @@ export default class ChatWelcome extends Component {
                     {app.chat.getChats().length ? (
                         <div className="welcome">
                             <h1>{app.translator.trans('xelson-chat.forum.chat.welcome.header')}</h1>
-                            <span>{app.translator.trans('xelson-chat.forum.chat.welcome')}</span>
+                            <span>{app.translator.trans('xelson-chat.forum.chat.welcome.subheader')}</span>
                         </div>
                     ) : null}
                 </div>

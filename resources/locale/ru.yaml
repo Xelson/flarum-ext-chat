@@ -8,26 +8,33 @@ xelson-chat:
       disable_notifications: Отключить push-уведомления
       minimize: Свернуть
       maximize: Развернуть
-      chat.settings: Настройки чата
+      chat:
+        settings: Настройки чата
     chat:
-      welcome: Пожалуйста, выберите чат слева для беседы
-      welcome.header: Добро пожаловать в Neon Chat!
+      welcome:
+        header: Добро пожаловать в Neon Chat!
+        subheader: Пожалуйста, выберите чат слева для беседы
       moder: Модератор
       kick: Кикнуть
       leave: Выйти
       edit_modal:
         title: Настройки чата
-        moderator.got: Вы получили права Модератора в чате {chatname}!
-        moderator.lost: Вы потеряли Модератора в чате {chatname}.
+        moderator:
+          got: Вы получили права Модератора в чате {chatname}!
+          lost: Вы потеряли Модератора в чате {chatname}.
         form:
-          title: Название чата
-          title.validator: Хотя бы один символ
-          color: Цвет
-          color.validator: В hex формате
-          icon: => core.ref.icon
-          icon.validator: => core.ref.icon_text
-          users: Выбранные пользователи
-          users.edit: Выбор и редактирование пользователей
+          title:
+            label: Название чата
+            validator: Хотя бы один символ
+          color:
+            label: Цвет
+            validator: В hex формате
+          icon:
+            label: => core.ref.icon
+            validator: => core.ref.icon_text
+          users:
+            label: Выбранные пользователи
+            edit: Выбор и редактирование пользователей
           leave: Покинуть чат
           return: Вернутся в чат
           delete:
@@ -46,22 +53,26 @@ xelson-chat:
         placeholder: Поиск
         preview:
           empty: Нет сообщений
-        add_modal: 
+        add_modal:
           title: Выберите пользователей
           chat: Чат
           channel: Канал
-          create.chat: Создать чат
-          create.channel: Создать канал
+          create:
+            chat: Создать чат
+            channel: Создать канал
           alerts:
             exists: Вы не можете создать еще одно ЛС с этим пользователем!
           form:
-            title.chat: Название чата
-            title.channel: Название канала
-            title.validator: Хотя бы один символ
-            icon: => core.ref.icon
-            icon.validator: => core.ref.icon_text
-            color: => xelson-chat.forum.chat.edit_modal.form.color
-            color.validator: => xelson-chat.forum.chat.edit_modal.form.color.validator
+            title:
+              chat: Название чата
+              channel: Название канала
+              validator: Хотя бы один символ
+            icon:
+              label: => core.ref.icon
+              validator: => core.ref.icon_text
+            color:
+              label: => xelson-chat.forum.chat.edit_modal.form.color.label
+              validator: => xelson-chat.forum.chat.edit_modal.form.color.validator
             users: Выбранные пользователи
           search:
             placeholder: Поиск пользователей
@@ -73,7 +84,7 @@ xelson-chat:
           hide: Скрыть
           resend: Отправить еще раз
         censored: Авторизируйтесь, чтобы увидеть это сообщение!
-        deleted: удалено 
+        deleted: удалено
         deleted_forever: удалено навсегда
         you: Вы
         type:
@@ -81,17 +92,25 @@ xelson-chat:
           event: Событие
           code: <Код />
         events:
-          chat.created: "{creatorname} создал {chatname} и пригласил {usernames}"
-          pm.created: "{creatorname} создал чат с {username}"
-          channel.created: "{creatorname} создал канал {chatname}"
-          title.edited: "{editorname} изменил название чата с {old} на {new}"
-          icon.edited: "{editorname} изменил иконку с {old} на {new}"
-          color.edited: "{editorname} изменил цвет с {old} на {new}"
-          users.invited: "{editorname} пригласил {usernames}"
-          users.kicked: "{editorname} исключил {usernames}"
-          users.invited_kicked: "{editorname} пригласил {invtednames} и исключил {kickednames}"
-          self.leaved: "{username} покинул чат"
-          self.entered: "{username} вошел в чат"
+          chat:
+            created: "{creatorname} создал {chatname} и пригласил {usernames}"
+          pm:
+            created: "{creatorname} создал чат с {username}"
+          channel:
+            created: "{creatorname} создал канал {chatname}"
+          title:
+            edited: "{editorname} изменил название чата с {old} на {new}"
+          icon:
+            edited: "{editorname} изменил иконку с {old} на {new}"
+          color:
+            edited: "{editorname} изменил цвет с {old} на {new}"
+          users:
+            invited: "{editorname} пригласил {usernames}"
+            kicked: "{editorname} исключил {usernames}"
+            invited_kicked: "{editorname} пригласил {invtednames} и исключил {kickednames}"
+          self:
+            leaved: "{username} покинул чат"
+            entered: "{username} вошел в чат"
     errors:
       unauthenticated: Писать в чате могут только зарегистрированные пользователи
       chatdenied: Вашей группе пользователей запрещено писать сообщения
@@ -102,12 +121,13 @@ xelson-chat:
       edit: Править чат сообщения
       delete: Удалять чат сообщения
       enabled: Включить чат
-      create: Создавать чаты
-      create.channel: Создавать каналы
+      create:
+        chat: Создавать чаты
+        channel: Создавать каналы
       moderate:
         delete: Удалять чат сообщения
         vision: Видеть удаленные сообщения
-        
+
     settings:
       title: Настройки чата
       charlimit: Максимум символов в сообщении

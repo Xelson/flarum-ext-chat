@@ -42,7 +42,7 @@ app.initializers.add('xelson-chat', (app) => {
         .registerPermission(
             {
                 icon: 'fas fa-comment-medical',
-                label: app.translator.trans('xelson-chat.admin.permissions.create'),
+                label: app.translator.trans('xelson-chat.admin.permissions.create.chat'),
                 permission: 'xelson-chat.permissions.create',
             },
             'start'

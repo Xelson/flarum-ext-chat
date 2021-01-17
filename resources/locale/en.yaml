@@ -8,26 +8,32 @@ xelson-chat:
       disable_notifications: Disable notifications
       minimize: Minimize
       maximize: Maximize
-      chat.settings: Chat settings
+      chat:
+        settings: Chat settings
     chat:
-      welcome: Please select a chat on the left for the conversation
-      welcome.header: Welcome to Neon Chat!
+      welcome:
+        header: Welcome to Neon Chat!
+        subheader: Please select a chat on the left for the conversation
       moder: Moderator
       kick: Kick
       leave: Leave
       edit_modal:
         title: Chat settings
-        moderator.got: You just received Moderator rights in the chat {chatname}!
-        moderator.lost: You just lost your Moderator rights in the chat {chatname}.
+        moderator:
+          got: You just received Moderator rights in the chat {chatname}!
+          lost: You just lost your Moderator rights in the chat {chatname}.
         form:
-          title: Chat name
-          title.validator: At least 1 symbol
-          color: Color
-          color.validator: In hex format
-          icon: => core.ref.icon
-          icon.validator: => core.ref.icon_text
-          users: Selected users
-          users.edit: Select and edit users
+          title:
+            label: Chat name
+            validator: At least 1 symbol
+          color:
+            label: Color
+            validator: In hex format
+          icon:
+            label: => core.ref.icon
+            validator: => core.ref.icon_text
+          users:
+            edit: Select and edit users
           leave: Leave the chat
           return: Enter the chat
           delete:
@@ -46,23 +52,26 @@ xelson-chat:
         placeholder: Search
         preview:
           empty: No messages
-        add_modal: 
+        add_modal:
           title: Select users
           chat: Chat
           channel: Channel
-          create.chat: Create a new chat
-          create.channel: Create a new channel
+          create:
+            chat: Create a new chat
+            channel: Create a new channel
           alerts:
             exists: You can't create another PM with this user!
           form:
-            title.chat: Chat name
-            title.channel: Channel name
-            title: Chat name
-            title.validator: At least 1 symbol
-            icon: => core.ref.icon
-            icon.validator: => core.ref.icon_text
-            color: => xelson-chat.forum.chat.edit_modal.form.color
-            color.validator: => xelson-chat.forum.chat.edit_modal.form.color.validator
+            title:
+              chat: Chat name
+              channel: Channel name
+              validator: At least 1 symbol
+            icon:
+              label: => core.ref.icon
+              validator: => core.ref.icon_text
+            color:
+              label: => xelson-chat.forum.chat.edit_modal.form.color.label
+              validator: => xelson-chat.forum.chat.edit_modal.form.color.validator
             users: Selected users
           search:
             placeholder: Search Users
@@ -74,7 +83,7 @@ xelson-chat:
           hide: Hide
           resend: Resend
         censored: Log in to see this message!
-        deleted: deleted by 
+        deleted: deleted by
         deleted_forever: deleted forever by
         you: You
         type:
@@ -82,17 +91,25 @@ xelson-chat:
           event: Event
           code: <Code />
         events:
-          chat.created: "{creatorname} created {chatname} and invited {usernames}"
-          pm.created: "{creatorname} created chat with {username}"
-          channel.created: "{creatorname} created channel {chatname}"
-          title.edited: "{editorname} changed chat's title from {old} to {new}"
-          icon.edited: "{editorname} changed chat's icon from {old} to {new}"
-          color.edited: "{editorname} changed chat's color from {old} to {new}"
-          users.invited: "{editorname} invited {usernames}"
-          users.kicked: "{editorname} kicked {usernames}"
-          users.invited_kicked: "{editorname} invited {invitednames} and kicked {kickednames}"
-          self.leaved: "{username} leaved the chat"
-          self.entered: "{username} entered the chat"
+          chat:
+            created: "{creatorname} created {chatname} and invited {usernames}"
+          pm:
+            created: "{creatorname} created chat with {username}"
+          channel:
+            created: "{creatorname} created channel {chatname}"
+          title:
+            edited: "{editorname} changed chat's title from {old} to {new}"
+          icon:
+            edited: "{editorname} changed chat's icon from {old} to {new}"
+          color:
+            edited: "{editorname} changed chat's color from {old} to {new}"
+          users:
+            invited: "{editorname} invited {usernames}"
+            kicked: "{editorname} kicked {usernames}"
+            invited_kicked: "{editorname} invited {invitednames} and kicked {kickednames}"
+          self:
+            leaved: "{username} leaved the chat"
+            entered: "{username} entered the chat"
     errors:
       unauthenticated: Only registered users can use the chat
       chatdenied: Your user group is not allowed to write messages
@@ -103,8 +120,9 @@ xelson-chat:
       edit: Edit chat messages
       delete: Delete chat messages
       enabled: Enable chat
-      create: Start chats
-      create.channel: Start channels
+      create:
+        chat: Start chats
+        channel: Start channels
       moderate:
         delete: Delete chat messages
         vision: See deleted messages
