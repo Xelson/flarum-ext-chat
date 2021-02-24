@@ -41,6 +41,15 @@ Object.assign(Chat.prototype, {
         return this.pickTextColorBasedOnBgColorSimple(color, '#FFF', '#000');
     }),
 
+    matches(q) {
+        return (
+            this.title().toLowerCase().includes(q) ||
+            this.users().some((user) => {
+                return user.displayName().toLowerCase().includes(q);
+            })
+        );
+    },
+
     getPMUser() {
         let users = this.users();
         if (app.session.user && this.type() == 0 && users.length && users.length < 3) {

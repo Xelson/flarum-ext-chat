@@ -56,7 +56,7 @@ export default class ChatCreateModal extends ChatModal {
 
     componentFormChat() {
         return [
-            this.usersSelected.length >= 1
+            this.usersSelected.length > 1
                 ? [
                       this.componentFormInput({
                           title: app.translator.trans('xelson-chat.forum.chat.list.add_modal.form.title.chat'),
@@ -86,7 +86,7 @@ export default class ChatCreateModal extends ChatModal {
     }
 
     isCanCreateChat() {
-        if (this.getSelectedUsers().length >= 1 && !this.getInput().title().length) return false;
+        if (this.getSelectedUsers().length > 1 && !this.getInput().title().length) return false;
         if (!this.getSelectedUsers().length) return false;
         if (this.alertText()) return false;
 

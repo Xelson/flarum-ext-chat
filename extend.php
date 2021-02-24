@@ -32,7 +32,8 @@ return [
 
     (new Extend\Frontend('forum'))
         ->css(__DIR__ . '/resources/less/forum.less')
-        ->js(__DIR__ . '/js/dist/forum.js'),
+        ->js(__DIR__ . '/js/dist/forum.js')
+        ->route('/chat', 'chat'),
 
     (new Extend\Locales(__DIR__ . '/resources/locale')),
 

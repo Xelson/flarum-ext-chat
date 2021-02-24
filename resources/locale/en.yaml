@@ -1,5 +1,7 @@
 xelson-chat:
   forum:
+    index:
+      chat_link: Chat
     toolbar:
       title: Chat
       enable_sounds: Enable sounds
@@ -49,7 +51,7 @@ xelson-chat:
       list:
         pin: Pin panel
         unpin: Unpin panel
-        placeholder: Search
+        placeholder: Filter Chats
         preview:
           empty: No messages
         add_modal:
@@ -108,7 +110,7 @@ xelson-chat:
             kicked: "{editorname} kicked {usernames}"
             invited_kicked: "{editorname} invited {invitednames} and kicked {kickednames}"
           self:
-            leaved: "{username} leaved the chat"
+            leaved: "{username} left the chat"
             entered: "{username} entered the chat"
     errors:
       unauthenticated: Only registered users can use the chat

@@ -1,6 +1,6 @@
 {
     "name": "xelson/flarum-ext-chat",
-    "description": "Fork of original Push-EDX Realtime Chat with some improvements and bugfixes",
+    "description": "Realtime Chat for Flarum!",
     "keywords": [
         "chat",
         "flarum",

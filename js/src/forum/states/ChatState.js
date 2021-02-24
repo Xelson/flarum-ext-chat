@@ -1,13 +1,10 @@
-import ChatPreview from '../components/ChatPreview';
-import ChatViewport from '../components/ChatViewport';
-import ChatMessage from '../components/ChatMessage';
-import ChatEventMessage from '../components/ChatEventMessage';
 import Message from '../models/Message';
 
 import Model from 'flarum/Model';
-import evented from 'flarum/utils/evented';
+import Stream from 'flarum/utils/Stream';
 
 import * as resources from '../resources';
+import ViewportState from './ViewportState';
 
 var refAudio = new Audio();
 refAudio.src = resources.base64AudioNotificationRef;
@@ -17,33 +14,14 @@ var audio = new Audio();
 audio.src = resources.base64AudioNotification;
 audio.volume = 0.5;
 
-class ViewportState {
-    loadingSend = false;
-
-    scroll = {
-        autoScroll: true,
-        oldScroll: 0,
-    };
-
-    loading = false;
-    loadingQueries = {};
-
-    input = {
-        messageLength: 0,
-        rows: 1,
-        content: '',
-    };
-
-    messagesFetched = false;
-}
-
 export default class ChatState {
     constructor() {
+        this.q = Stream('');
         this.chats = [];
         this.chatmessages = [];
 
+        this.chatsLoading = true;
         this.curChat = null;
-        this.evented = evented;
         this.totalHiddenCount = 0;
 
         let neonchatState = JSON.parse(localStorage.getItem('neonchat')) ?? {};
@@ -74,8 +52,6 @@ export default class ChatState {
 
         this.viewportStates = {};
         if (app.session.user) app.pusher.then(this.listenSocketChannels.bind(this));
-
-        this.evented.on('onClickMessage', this.onChatMessageClicked.bind(this));
     }
 
     getViewportState(model) {
@@ -186,7 +162,7 @@ export default class ChatState {
     }
 
     getChats() {
-        return this.chats;
+        return this.chats.filter((chat) => (this.q() && chat.matches(this.q().toLowerCase())) || (!this.q() && !chat.removed_at()));
     }
 
     getChatsSortedByLastUpdate() {
@@ -198,22 +174,12 @@ export default class ChatState {
         });
     }
 
-    componentsChats() {
-        return this.getChatsSortedByLastUpdate().map((model) => (
-            <div onclick={this.onChatChanged.bind(this, model)}>
-                <ChatPreview key={model.id()} model={model} />
-            </div>
-        ));
-    }
-
     addChat(model, outside = false) {
         this.chats.push(model);
         this.viewportStates[model.id()] = new ViewportState();
 
         if (model.id() == this.getFrameState('selectedChat')) this.onChatChanged(model);
         if (outside) model.isNeedToFlash = true;
-
-        app.test = () => model.delete();
     }
 
     editChat(model, outside = false) {
@@ -263,8 +229,6 @@ export default class ChatState {
 
         this.setCurrentChat(model);
         m.redraw.sync();
-
-        this.evented.trigger('onChatChanged', model);
     }
 
     comporatorAscButZerosDesc(a, b) {
@@ -300,14 +264,6 @@ export default class ChatState {
                 m.redraw();
             }
         });
-    }
-
-    componentChatMessage(model) {
-        return model.type() ? <ChatEventMessage key={model.id()} model={model} /> : <ChatMessage key={model.id()} model={model} />;
-    }
-
-    componentsChatMessages(chat) {
-        return this.getChatMessages((message) => message.chat() === chat).map((model) => this.componentChatMessage(model));
     }
 
     isChatMessageExists(model) {
@@ -451,17 +407,11 @@ export default class ChatState {
     }
 
     apiFetchChats() {
-        let self = this;
-
         return app.store.find('chats').then((chats) => {
-            chats.map((model) => self.addChat(model));
+            chats.map((model) => this.addChat(model));
+            this.chatsLoading = false;
             m.redraw();
         });
-    }
-
-    componentCurViewport() {
-        let model = this.getCurrentChat();
-        return model ? <ChatViewport model={model} /> : null;
     }
 
     messageNotify(model) {
